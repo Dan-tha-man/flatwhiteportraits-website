@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandpiper Portraits | Timeless Photography</title>
+  <meta name="description" content="Sandpiper Portraits captures life's most meaningful moments with a natural, timeless approach. Family, wedding, senior, and newborn photography.">
+  <style>
+    /* =============================================
+       CSS Custom Properties
+       ============================================= */
+    :root {
+      --color-sand-light: #f5f0eb;
+      --color-sand: #e8ddd3;
+      --color-sand-dark: #d4c5b5;
+      --color-teal: #5b8a8a;
+      --color-teal-dark: #4a7272;
+      --color-text: #2c2c2c;
+      --color-text-light: #555;
+      --color-white: #ffffff;
+      --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      --nav-height: 64px;
+      --max-width: 1120px;
+      --transition-speed: 0.3s;
+    }
+
+    /* =============================================
+       Reset & Base
+       ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+
+    body {
+      font-family: var(--font-stack);
+      color: var(--color-text);
+      line-height: 1.6;
+      background: var(--color-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =============================================
+       Utilities
+       ============================================= */
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5em;
+      color: var(--color-text);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .btn-primary {
+      background: var(--color-teal);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-teal-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-teal);
+      border: 2px solid var(--color-teal);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-teal);
+      color: var(--color-white);
+    }
+
+    /* =============================================
+       Scroll-triggered animations
+       ============================================= */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       Navigation
+       ============================================= */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* EDIT: Change brand name here */
+    .nav-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-teal);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      transition: color var(--transition-speed);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-teal);
+      transition: width var(--transition-speed);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-teal);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger menu button */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-text);
+      margin: 6px 0;
+      transition: transform var(--transition-speed), opacity var(--transition-speed);
+      border-radius: 2px;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* =============================================
+       Hero Section
+       ============================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--color-sand-light);
+      padding: calc(var(--nav-height) + 2rem) 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative CSS circles (no images needed) */
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      background: var(--color-teal);
+    }
+
+    .hero::before {
+      width: 500px;
+      height: 500px;
+      top: -120px;
+      right: -100px;
+    }
+
+    .hero::after {
+      width: 300px;
+      height: 300px;
+      bottom: -60px;
+      left: -80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    /* EDIT: Change company name here */
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.5em;
+      color: var(--color-text);
+    }
+
+    .hero h1 span {
+      color: var(--color-teal);
+    }
+
+    /* EDIT: Change tagline here */
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--color-text-light);
+      margin-bottom: 2rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* =============================================
+       About Section
+       ============================================= */
+    .about {
+      padding: 5rem 0;
+      background: var(--color-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* Placeholder for a photo — replace with an <img> when ready */
+    .about-image {
+      background: var(--color-sand);
+      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      /* EDIT: Replace this div with an <img src="your-photo.jpg" alt="..."> */
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      color: var(--color-text-light);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    /* =============================================
+       Services Section
+       ============================================= */
+    .services {
+      padding: 5rem 0;
+      background: var(--color-sand-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--color-white);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.25rem;
+      background: var(--color-sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+    }
+
+    /* =============================================
+       Contact Section
+       ============================================= */
+    .contact {
+      padding: 5rem 0;
+      background: var(--color-white);
+    }
+
+    .contact-wrapper {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-wrapper p {
+      color: var(--color-text-light);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* EDIT: Change email address below */
+    .contact-email {
+      display: inline-block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-teal);
+      margin-bottom: 2rem;
+      word-break: break-all;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    /* =============================================
+       Footer
+       ============================================= */
+    .footer {
+      background: var(--color-text);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.85);
+      transition: color var(--transition-speed);
+    }
+
+    .footer a:hover {
+      color: var(--color-white);
+    }
+
+    .back-to-top {
+      font-weight: 500;
+    }
+
+    /* =============================================
+       Responsive — Tablet & Mobile
+       ============================================= */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 260px;
+        height: 100vh;
+        background: var(--color-white);
+        flex-direction: column;
+        padding: calc(var(--nav-height) + 1.5rem) 2rem 2rem;
+        gap: 1.5rem;
+        box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform var(--transition-speed) ease;
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image {
+        max-height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       Navigation
+       ============================================ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <!-- EDIT: Brand / logo text -->
+      <a href="#hero" class="nav-brand">Sandpiper Portraits</a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       Hero Section
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <!-- EDIT: Company name and tagline -->
+      <h1><span>Sandpiper</span> Portraits</h1>
+      <p>Capturing life's most meaningful moments with a natural, timeless approach — so you can hold onto them forever.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Book a Session</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       About Section
+       ============================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid fade-in">
+        <!-- EDIT: Replace this placeholder with an actual image -->
+        <div class="about-image" role="img" aria-label="Photographer at work">
+          <!-- Replace with: <img src="your-photo.jpg" alt="Photographer at work"> -->
+          Photo placeholder
+        </div>
+        <div class="about-text">
+          <!-- EDIT: About heading and body copy -->
+          <h2>Hello, I'm the Photographer Behind Sandpiper Portraits</h2>
+          <p>
+            I believe the best photographs feel effortless — genuine laughter,
+            quiet glances, and all the little in-between moments that make your
+            story yours. My goal is to create a relaxed, enjoyable experience so
+            your true personality shines through every frame.
+          </p>
+          <p>
+            Based along the coast, I draw inspiration from soft natural light,
+            open landscapes, and the unhurried pace of life near the shore.
+            Whether we're on the beach at golden hour or in the comfort of your
+            home, I'll be there to document it beautifully.
+          </p>
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Services Section
+       ============================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title fade-in">What I Offer</h2>
+      <p class="section-subtitle fade-in">Every session is tailored to you — relaxed, personal, and full of real moments.</p>
+
+      <div class="services-grid">
+        <!-- EDIT: Service cards — change titles, icons, and descriptions -->
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">&#x1F46A;</div>
+          <h3>Family Portraits</h3>
+          <p>Relaxed outdoor or in-home sessions that capture the connection, chaos, and joy of your family just as you are.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">&#x1F490;</div>
+          <h3>Wedding Photography</h3>
+          <p>From getting-ready details to the last dance — timeless, documentary-style coverage of your entire celebration.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">&#x1F393;</div>
+          <h3>Senior Portraits</h3>
+          <p>Fun, expressive sessions that celebrate this milestone with portraits you'll be proud to share for years to come.</p>
+        </div>
+
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">&#x1F476;</div>
+          <h3>Newborn &amp; Maternity</h3>
+          <p>Gentle, intimate sessions in the comfort of your home — capturing the tender first days and the beauty of new beginnings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Contact Section
+       ============================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper fade-in">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p>
+          Ready to book a session or have questions about pricing and availability?
+          I'd love to hear from you. Send me an email and I'll get back to you
+          within 24 hours.
+        </p>
+        <!-- EDIT: Replace with your actual email address -->
+        <a href="mailto:hello@sandpiperportraits.com" class="contact-email">hello@sandpiperportraits.com</a>
+        <br>
+        <a href="mailto:hello@sandpiperportraits.com" class="btn btn-primary">Send an Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Footer
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <!-- EDIT: Copyright name / year -->
+      <span>&copy; 2025 Sandpiper Portraits. All rights reserved.</span>
+      <a href="#hero" class="back-to-top">&uarr; Back to top</a>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JavaScript — mobile nav toggle & scroll animations
+       ============================================ -->
+  <script>
+    /* --- Mobile navigation toggle --- */
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks  = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* --- Scroll-triggered fade-in animations --- */
+    const faders = document.querySelectorAll('.fade-in');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // animate only once
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      faders.forEach(el => observer.observe(el));
+    } else {
+      // Fallback: show everything immediately
+      faders.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+
+</body>
+</html>
