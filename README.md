@@ -1,10 +1,10 @@
 # Sandpiper Portraits — Landing Page
 
-A single-page landing site for a photography business built with plain HTML, CSS, and JavaScript. No frameworks, no build tools, no external dependencies.
+A single-page landing site for a photography business built with HTML, CSS, and JavaScript. Processed by Jekyll on GitHub Pages (front matter only — no themes or plugins required). No external dependencies.
 
 ## Quick Start
 
-Open `index.html` in any modern browser — that's it.
+Open `index.html` in any modern browser to preview locally. The Jekyll front matter (`---` block at the top) is ignored by browsers and only used during GitHub Pages deployment.
 
 ## Deploy to GitHub Pages
 
@@ -20,11 +20,11 @@ Open `index.html` in any modern browser — that's it.
    ```
 3. Go to **Settings → Pages** in your repository.
 4. Under **Source**, select the `main` branch and `/` (root) folder, then click **Save**.
-5. Your site will be live at `https://YOUR_USERNAME.github.io/sandpiperportraits-website/` within a minute or two.
+5. GitHub Pages will run Jekyll automatically. Your site will be live at `https://YOUR_USERNAME.github.io/sandpiperportraits-website/` within a minute or two.
 
 ## Custom Domain Setup
 
-1. In your repository, create a file named `CNAME` containing your domain on a single line:
+1. Add a `CNAME` file to the repo root containing your domain on a single line:
    ```
    www.sandpiperportraits.com
    ```
@@ -44,20 +44,26 @@ Open `index.html` in any modern browser — that's it.
 
 The HTML file uses `<!-- EDIT: -->` comments to mark every section you'll likely want to change. Search for `EDIT:` to find them all. Key areas:
 
-| What to change              | Where to look                        |
-|-----------------------------|--------------------------------------|
-| Company name / brand        | `.nav-brand`, `.hero h1`             |
-| Tagline                     | `.hero p`                            |
-| About section copy          | `#about .about-text`                 |
-| Service card titles & text  | `#services .service-card`            |
-| Email address               | `#contact` — the `mailto:` links     |
-| Copyright line              | `.footer span`                       |
-| Photo placeholder           | `#about .about-image` — swap the div for an `<img>` tag |
+| What to change                | Where to look                                                  |
+|-------------------------------|----------------------------------------------------------------|
+| Company name / brand          | `.nav-brand`, `.hero h1`, `.hero .section-label`               |
+| Hero headline & tagline       | `.hero h1`, `.hero p`                                          |
+| About section copy            | `#about .split-text`                                           |
+| "What Makes Us Different"     | Second `.split` section — heading and body text                |
+| Feature cards (The Experience)| `#experience .feature-card` — 4 cards                          |
+| Services / What's Included    | `#services .include-item` — 6 items with icons                 |
+| Testimonials                  | `#testimonials .testimonial-card` — 4 placeholder reviews      |
+| FAQ questions & answers       | `#faq .faq-item` — 8 accordion items                           |
+| Email address                 | `#contact` and footer — the `mailto:` links                    |
+| Copyright line                | `.footer-bottom span`                                          |
+| Photo placeholders            | `.split-image` divs — swap for `<img src="..." alt="...">` tags|
 
 ## Project Structure
 
 ```
 .
-├── index.html   # Entire site (HTML + inline CSS + JS)
+├── _config.yml  # Jekyll configuration for GitHub Pages
+├── CNAME        # Custom domain pointer
+├── index.html   # Entire site (HTML + inline CSS + JS + Jekyll front matter)
 └── README.md    # This file
 ```
