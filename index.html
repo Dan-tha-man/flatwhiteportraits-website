@@ -252,7 +252,7 @@ layout: none
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--color-sand-light);
+      background: var(--color-white);
       padding: calc(var(--nav-height) + 3rem) 1.5rem 5rem;
       position: relative;
     }
@@ -292,6 +292,7 @@ layout: none
        ============================================= */
     .split {
       padding: var(--section-padding) 0;
+      background: var(--color-sand-light);
     }
 
     .split-grid {
@@ -312,7 +313,7 @@ layout: none
     /* EDIT: Replace placeholders with real images */
     .split-image {
       background: var(--color-sand);
-      border-radius: 6px;
+      border-radius: 0;
       aspect-ratio: 4 / 5;
       display: flex;
       align-items: center;
@@ -320,6 +321,7 @@ layout: none
       color: var(--color-text-muted);
       font-size: 0.85rem;
       overflow: hidden;
+      border: 7px solid #000;
     }
 
     .split-image.landscape {
@@ -594,6 +596,125 @@ layout: none
     }
 
     /* =============================================
+       Comparison Section
+       ============================================= */
+    .comparison {
+      padding: var(--section-padding) 0;
+      background: var(--color-white);
+    }
+
+    .comparison-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .comparison-header .section-heading {
+      font-size: 2.8rem;
+    }
+
+    .comparison-header .section-body {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .comparison-card {
+      position: relative;
+    }
+
+    .comparison-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border: 6px solid var(--color-border);
+    }
+
+    .comparison-card--pro img {
+      border-color: #000;
+    }
+
+    .comparison-label {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .comparison-card--pro .comparison-label {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .comparison-header .section-heading {
+        font-size: 2rem;
+      }
+    }
+
+    /* =============================================
+       Image Carousel
+       ============================================= */
+    .carousel {
+      padding: 3rem 0;
+      background: var(--color-white);
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      animation: carousel-scroll 30s linear infinite;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .carousel-track img {
+      height: 280px;
+      width: auto;
+      object-fit: cover;
+      filter: grayscale(100%);
+      border: 5px solid var(--color-border);
+      transition: filter 0.4s ease;
+    }
+
+    .carousel-track img:hover {
+      filter: grayscale(0%);
+    }
+
+    @keyframes carousel-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-track img {
+        height: 200px;
+      }
+    }
+
+    /* =============================================
        Final CTA Section
        ============================================= */
     .final-cta {
@@ -813,10 +934,8 @@ layout: none
   <section class="split" id="about">
     <div class="container">
       <div class="split-grid fade-in">
-        <!-- EDIT: Replace placeholder with an actual image -->
         <div class="split-image" role="img" aria-label="Portrait photographer at work">
-          <!-- Replace with: <img src="your-photo.jpg" alt="..."> -->
-          Photo placeholder
+            <img src="./assets/L&J_Photobooth-105.jpg">
         </div>
         <div class="split-text">
           <span class="section-label">More Than Just Photos</span>
@@ -835,23 +954,44 @@ layout: none
   </section>
 
   <!-- ============================================
-       Philosophy — Reverse split
+       Comparison — Flawless in Every Frame
        ============================================ -->
-  <section class="split" style="background: var(--color-sand-light);">
+  <section class="comparison">
     <div class="container">
-      <div class="split-grid reverse fade-in">
-        <!-- EDIT: Replace placeholder -->
-        <div class="split-image landscape" role="img" aria-label="Natural light portrait session">
-          Photo placeholder
+      <div class="comparison-header fade-in">
+        <span class="section-label">The Magic of Professional Lighting</span>
+        <h2 class="section-heading">Flawless in Every Frame</h2>
+        <p class="section-body">
+          Our studio-quality lighting and professional editing create a subtle smoothing effect that gives every guest magazine-ready skin. No harsh flash, no unflattering shadows, just beautifully lit, timeless portraits.
+        </p>
+      </div>
+      <div class="comparison-grid fade-in">
+        <!-- EDIT: Replace with your comparison photos in assets/comparison/ -->
+        <div class="comparison-card">
+          <span class="comparison-label">Standard Photobooth</span>
+          <img src="./assets/comparison/standard.jpg">
         </div>
-        <div class="split-text">
-          <span class="section-label">What Makes Us Different</span>
-          <h2 class="section-heading">The Magic of Professional Lighting</h2>
-          <p class="section-body">
-            Our studio-quality lighting and professional editing create a subtle smoothing effect that gives every guest magazine-ready skin. No harsh flash, no unflattering shadows, just beautifully lit, timeless portraits.
-          </p>
+        <div class="comparison-card comparison-card--pro">
+          <span class="comparison-label">Our Portrait Experience</span>
+          <img src="./assets/comparison/portrait.jpg" style="object-position: center top;">
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Image Carousel
+       EDIT: Add/remove images below. The set is
+       duplicated in JS to create an infinite loop.
+       ============================================ -->
+  <section class="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <img src="./assets/L&J_Photobooth-104.jpg" alt="Portrait session">
+      <img src="./assets/L&J_Photobooth-105.jpg" alt="Portrait session">
+      <img src="./assets/L&J_Photobooth-150.jpg" alt="Portrait session">
+      <img src="./assets/L&J_Photobooth-104.jpg" alt="Portrait session">
+      <img src="./assets/L&J_Photobooth-105.jpg" alt="Portrait session">
+      <img src="./assets/L&J_Photobooth-150.jpg" alt="Portrait session">
     </div>
   </section>
 
@@ -1198,6 +1338,12 @@ layout: none
         }
       });
     });
+
+    /* --- Carousel: duplicate content for seamless loop --- */
+    const track = document.getElementById('carouselTrack');
+    if (track) {
+      track.innerHTML += track.innerHTML;
+    }
   </script>
 
 </body>
