@@ -324,6 +324,12 @@ layout: none
       border: 7px solid #000;
     }
 
+    .split-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .split-image.landscape {
       aspect-ratio: 3 / 2;
     }
@@ -866,6 +872,10 @@ layout: none
 
       .split-image {
         aspect-ratio: 4 / 3;
+      }
+
+      .split-image img {
+        object-position: center 20%;
       }
     }
 
