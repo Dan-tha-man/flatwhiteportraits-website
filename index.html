@@ -56,7 +56,16 @@ layout: none
       -webkit-font-smoothing: antialiased;
     }
 
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      display: block;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-user-drag: none;
+    }
     a { color: inherit; text-decoration: none; }
 
     /* =============================================
@@ -1765,6 +1774,13 @@ layout: none
        JavaScript
        ============================================ -->
   <script>
+    /* --- Prevent right-click on images --- */
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+
     /* --- Mobile navigation toggle --- */
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks  = document.getElementById('navLinks');
