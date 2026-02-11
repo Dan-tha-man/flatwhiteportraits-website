@@ -906,7 +906,7 @@ layout: none
 
     @keyframes carousel-scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(var(--scroll-distance, -50%)); }
     }
 
     @media (max-width: 768px) {
@@ -915,9 +915,20 @@ layout: none
         margin-top: 1rem;
       }
 
+      .carousel-track {
+        gap: 0.5rem;
+      }
+
       .carousel-track img {
         height: 200px;
         width: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-track img {
+        height: 150px;
+        width: 150px;
       }
     }
 
@@ -1338,14 +1349,14 @@ layout: none
     <div class="carousel-track" id="carouselTrack">
       <img src="./assets/carousel/L&J_Photobooth-111.jpg" alt="Portrait session">
       <img src="./assets/carousel/L&J_Photobooth-150.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-130.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-104.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-208.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-111.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-150.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-130.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-104.jpg" alt="Portrait session">
-      <img src="./assets/carousel/L&J_Photobooth-208.jpg" alt="Portrait session">
+      <img src="./assets/carousel/L&J_Photobooth-130.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-104.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-208.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-111.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-150.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-130.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-104.jpg" alt="Portrait session" loading="lazy">
+      <img src="./assets/carousel/L&J_Photobooth-208.jpg" alt="Portrait session" loading="lazy">
     </div>
   </section>
 
@@ -1822,7 +1833,37 @@ layout: none
     /* --- Carousel: duplicate content for seamless loop --- */
     const track = document.getElementById('carouselTrack');
     if (track) {
+      const images = track.querySelectorAll('img');
+      const originalCount = images.length;
+
+      // Duplicate content for seamless loop
       track.innerHTML += track.innerHTML;
+
+      // Calculate actual width for animation based on rendered image size
+      function updateCarouselAnimation() {
+        const img = track.querySelector('img');
+        if (!img) return;
+
+        const imgWidth = img.offsetWidth;
+        const gap = parseInt(getComputedStyle(track).gap) || 16;
+        const scrollDistance = (imgWidth + gap) * originalCount;
+
+        track.style.setProperty('--scroll-distance', `-${scrollDistance}px`);
+      }
+
+      // Wait for images to load before calculating, then update on resize
+      if (document.readyState === 'complete') {
+        updateCarouselAnimation();
+      } else {
+        window.addEventListener('load', updateCarouselAnimation);
+      }
+
+      // Debounced resize handler
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateCarouselAnimation, 100);
+      });
     }
 
     /* --- Guest Book Slideshow --- */
