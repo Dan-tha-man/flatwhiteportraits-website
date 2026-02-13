@@ -1895,6 +1895,17 @@ layout: none
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(updateCarouselAnimation, 100);
       }, { passive: true });
+
+      // Pause animation when carousel is not visible
+      if ('IntersectionObserver' in window) {
+        const carouselObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            track.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+          });
+        }, { threshold: 0 });
+
+        carouselObserver.observe(track.parentElement);
+      }
     }
 
     /* --- Guest Book Slideshow --- */
