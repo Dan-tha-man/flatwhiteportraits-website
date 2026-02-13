@@ -156,13 +156,15 @@ layout: none
        ============================================= */
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(30px) translateZ(0);
       transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
     }
 
     .fade-in.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) translateZ(0);
+      will-change: auto;
     }
 
     /* =============================================
@@ -179,6 +181,7 @@ layout: none
       -webkit-backdrop-filter: blur(10px);
       z-index: 1000;
       border-bottom: 1px solid var(--color-border);
+      transform: translateZ(0);
     }
 
     .nav .container {
@@ -891,6 +894,7 @@ layout: none
       padding: 3rem 0;
       background: var(--color-white);
       overflow: hidden;
+      contain: layout style;
     }
 
     .carousel-track {
@@ -898,6 +902,8 @@ layout: none
       gap: 1rem;
       width: max-content;
       animation: carousel-scroll 60s linear infinite;
+      will-change: transform;
+      transform: translateZ(0);
     }
 
     .carousel-track img {
@@ -907,7 +913,9 @@ layout: none
       object-position: center top;
       filter: grayscale(100%);
       border: 5px solid var(--color-border);
-      transition: filter 0.4s ease;
+      transition: filter 0.3s ease;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     .carousel-track img:hover {
@@ -1060,6 +1068,12 @@ layout: none
        Responsive — Mobile
        ============================================= */
     @media (max-width: 768px) {
+      .nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.98);
+      }
+
       .nav-toggle {
         display: block;
       }
@@ -1880,7 +1894,7 @@ layout: none
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(updateCarouselAnimation, 100);
-      });
+      }, { passive: true });
     }
 
     /* --- Guest Book Slideshow --- */
