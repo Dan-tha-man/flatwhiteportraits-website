@@ -378,6 +378,27 @@ layout: none
       margin-top: 1rem;
     }
 
+    .split-text--centered {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+    }
+
+    .split-booth-image {
+      overflow: hidden;
+    }
+
+    .split-booth-image img {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+      display: block;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border: 7px solid #000;
+    }
+
     /* =============================================
        Full-width centered text section
        ============================================= */
@@ -1317,26 +1338,24 @@ layout: none
   </section>
 
   <!-- ============================================
-       About — Intro split (image + text)
+       About — Intro stacked (text above, wide booth image below)
        ============================================ -->
   <section class="split" id="about">
-    <div class="container">
-      <div class="split-grid fade-in">
-        <div class="split-image" role="img" aria-label="Portrait photographer at work">
-            <img src="./assets/L&J_Photobooth-315.jpg">
-        </div>
-        <div class="split-text">
+    <div class="container container--narrow">
+      <div class="split-stacked fade-in">
+        <div class="split-text split-text--centered">
           <span class="section-label">More Than Just Photos</span>
           <!-- EDIT: About heading and copy -->
           <h2 class="section-heading">Portraits Crafted Around You</h2>
           <p class="section-body">
-            We turn to the art of photography to honor and preserve your most meaningful milestones. These are the moments that deserve more than a fleeting snapshot &mdash; they call for the skill and artistry of a true professional to capture their essence.
-          </p>
-          <p class="section-body">
             We are a luxury portrait studio inspired by Hollywood glamour, designed for those who appreciate sophistication and timeless artistry. Step into an editorial setting where every guest is photographed like a celebrity. Our approach brings the allure of a red carpet shoot to your celebration, crafting portraits that are as timeless as they are keep-worthy.
           </p>
-          <!--<a href="#contact" class="btn btn-primary">Get in Touch</a>-->
         </div>
+      </div>
+    </div>
+    <div class="container fade-in">
+      <div class="split-booth-image">
+        <img src="./assets/booth-example.jpg" alt="Portrait studio setup at a wedding venue">
       </div>
     </div>
   </section>
@@ -1421,43 +1440,27 @@ layout: none
   <!-- ============================================
        What's Included — 6 items
        ============================================ -->
-  <section class="includes" id="services">
+  <!-- ============================================
+       Guest Book Section
+       ============================================ -->
+  <section class="split" id="guestbook" style="background: var(--color-white);">
     <div class="container">
-      <div class="includes-header fade-in">
-        <span class="section-label">Everything You Need</span>
-        <h2 class="section-heading">The Details</h2>
-      </div>
-      <div class="includes-grid">
-        <!-- EDIT: Included items -->
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x1F4F7;</div>
-          <h3>Professional Photographer</h3>
-          <p>A skilled photographer dedicated to your session, with expert lighting and posing guidance throughout.</p>
+      <div class="split-grid reverse fade-in">
+        <div class="split-image guestbook-slideshow">
+          <img src="./assets/guestbook/guestbook_1.png" alt="Guest book sample showing a signed portrait" class="guestbook-slide active">
+          <img src="./assets/guestbook/guestbook_2.png" alt="Guest book sample showing a signed portrait" class="guestbook-slide">
+          <img src="./assets/guestbook/guestbook_3.jpg" alt="Guest book sample showing a signed portrait" class="guestbook-slide">
         </div>
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x2728;</div>
-          <h3>Studio-quality Lighting</h3>
-          <p>Professional continuous lighting setup that creates stunning, magazine-worthy portraits with soft, flattering illumination.</p>
-        </div>
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x1F3A8;</div>
-          <h3>Backdrop Options</h3>
-          <p>Choose from classic white, dramatic black, or custom colors to match your wedding aesthetic and color palette.</p>
-        </div>
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x1F5BC;</div>
-          <h3>Professional Editing</h3>
-          <p>Every portrait is individually edited for colour, exposure, and tone to achieve a polished, cohesive gallery.</p>
-        </div>
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x1F4E6;</div>
-          <h3>Full Digital Gallery</h3>
-          <p>Receive your complete gallery of high-resolution images, ready for printing, framing, or sharing online.</p>
-        </div>
-        <div class="include-item fade-in">
-          <div class="include-icon" aria-hidden="true">&#x1F496;</div>
-          <h3>Print &amp; Album Add-ons</h3>
-          <p>Upgrade with heirloom prints, custom albums, and wall art to display your portraits beautifully at home.</p>
+        <div class="split-text">
+          <span class="section-label">A Personal Touch</span>
+          <h2 class="section-heading">The Digital Guest Book</h2>
+          <p class="section-body">
+            Give your guests a meaningful way to leave their mark. After their portrait session, each guest signs their photo with a heartfelt message using our on-site display. These signed portraits are compiled into a beautiful digital guest book, delivered to you shortly after your wedding.
+          </p>
+          <p class="section-body">
+            Want something you can hold? Upgrade to a handcrafted physical guest book, printed on archival-quality paper and bound in Italy for a treasured keepsake you'll revisit for years to come.
+          </p>
+          <a href="#contact" class="btn btn-primary contact-trigger">Learn More</a>
         </div>
       </div>
     </div>
@@ -1551,27 +1554,43 @@ layout: none
     </div>
   </section>
 
-  <!-- ============================================
-       Guest Book Section
-       ============================================ -->
-  <section class="split" id="guestbook" style="background: var(--color-white);">
+  <section class="includes" id="services">
     <div class="container">
-      <div class="split-grid reverse fade-in">
-        <div class="split-image guestbook-slideshow">
-          <img src="./assets/guestbook/guestbook_1.png" alt="Guest book sample showing a signed portrait" class="guestbook-slide active">
-          <img src="./assets/guestbook/guestbook_2.png" alt="Guest book sample showing a signed portrait" class="guestbook-slide">
-          <img src="./assets/guestbook/guestbook_3.jpg" alt="Guest book sample showing a signed portrait" class="guestbook-slide">
+      <div class="includes-header fade-in">
+        <span class="section-label">Everything You Need</span>
+        <h2 class="section-heading">The Details</h2>
+      </div>
+      <div class="includes-grid">
+        <!-- EDIT: Included items -->
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x1F4F7;</div>
+          <h3>Professional Photographer</h3>
+          <p>A skilled photographer dedicated to your session, with expert lighting and posing guidance throughout.</p>
         </div>
-        <div class="split-text">
-          <span class="section-label">A Personal Touch</span>
-          <h2 class="section-heading">The Digital Guest Book</h2>
-          <p class="section-body">
-            Give your guests a meaningful way to leave their mark. After their portrait session, each guest signs their photo with a heartfelt message using our on-site display. These signed portraits are compiled into a beautiful digital guest book, delivered to you shortly after your wedding.
-          </p>
-          <p class="section-body">
-            Want something you can hold? Upgrade to a handcrafted physical guest book, printed on archival-quality paper and bound in Italy for a treasured keepsake you'll revisit for years to come.
-          </p>
-          <a href="#contact" class="btn btn-primary contact-trigger">Learn More</a>
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x2728;</div>
+          <h3>Studio-quality Lighting</h3>
+          <p>Professional continuous lighting setup that creates stunning, magazine-worthy portraits with soft, flattering illumination.</p>
+        </div>
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x1F3A8;</div>
+          <h3>Backdrop Options</h3>
+          <p>Choose from classic white, dramatic black, or custom colors to match your wedding aesthetic and color palette.</p>
+        </div>
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x1F5BC;</div>
+          <h3>Professional Editing</h3>
+          <p>Every portrait is individually edited for colour, exposure, and tone to achieve a polished, cohesive gallery.</p>
+        </div>
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x1F4E6;</div>
+          <h3>Full Digital Gallery</h3>
+          <p>Receive your complete gallery of high-resolution images, ready for printing, framing, or sharing online.</p>
+        </div>
+        <div class="include-item fade-in">
+          <div class="include-icon" aria-hidden="true">&#x1F496;</div>
+          <h3>Print &amp; Album Add-ons</h3>
+          <p>Upgrade with heirloom prints, custom albums, and wall art to display your portraits beautifully at home.</p>
         </div>
       </div>
     </div>
