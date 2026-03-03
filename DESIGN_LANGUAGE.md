@@ -1,4 +1,4 @@
-# Sandpiper Portraits Design Language
+# Flat White Portraits Design Language
 
 A shared design system for web and iOS native applications.
 
