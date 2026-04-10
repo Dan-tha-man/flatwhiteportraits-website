@@ -8,9 +8,11 @@ layout: none
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flat White Portraits | Luxury Photobooth</title>
   <meta name="description" content="Flat White Portraits captures life's most meaningful moments with a natural, timeless approach. Vanity Fair-style portraits for weddings and events.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo-dark.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo-light.svg" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@1,400&family=Josefin+Sans:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     /* =============================================
        CSS Custom Properties
@@ -196,11 +198,38 @@ layout: none
 
     /* EDIT: Change brand name here */
     .nav-brand {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-brand img {
+      height: 48px;
+      width: auto;
+    }
+
+    .nav-brand .brand-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .nav-brand .brand-script {
+      font-family: 'Libre Bodoni', Georgia, serif;
+      font-size: 1.6rem;
       font-weight: 400;
+      font-style: italic;
       color: var(--color-text);
-      letter-spacing: 0.02em;
+    }
+
+    .nav-brand .brand-caps {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--color-text);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
 
     .nav-links {
@@ -1300,7 +1329,13 @@ layout: none
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
       <!-- EDIT: Brand / logo text -->
-      <a href="#hero" class="nav-brand">Flat White Portraits</a>
+      <a href="#hero" class="nav-brand">
+        <img src="assets/logo/logo-dark.svg" alt="">
+        <span class="brand-text">
+          <span class="brand-script">flat white</span>
+          <span class="brand-caps">Portraits</span>
+        </span>
+      </a>
 
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
@@ -1771,7 +1806,7 @@ layout: none
       <div class="footer-grid">
         <div>
           <!-- EDIT: Footer about text -->
-          <h4>Flat White Portraits</h4>
+          <img src="assets/logo/logo-text-light.svg" alt="Flat White Portraits" style="height: 90px; width: auto; margin-bottom: 1rem;">
           <p>We'd love to hear your story.<br>Let's talk and make it real.</p>
         </div>
         <div>
