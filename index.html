@@ -12,7 +12,7 @@ layout: none
   <link rel="icon" type="image/svg+xml" href="assets/logo/logo-light.svg" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@1,400&family=Josefin+Sans:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Libre+Bodoni:ital,wght@1,400&family=Josefin+Sans:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     /* =============================================
        CSS Custom Properties
@@ -741,32 +741,70 @@ layout: none
       letter-spacing: 2px;
     }
 
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .testimonial-card {
+    .testimonial-featured {
+      max-width: 760px;
+      margin: 0 auto;
       background: var(--color-white);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      padding: 4rem 3rem 3rem;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
     }
 
-    .testimonial-card blockquote {
+    .testimonial-featured::before {
+      content: '\201C';
+      position: absolute;
+      top: 1.75rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 5.5rem;
+      line-height: 1;
+      color: var(--color-teal);
       font-style: italic;
-      color: var(--color-text-light);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
     }
 
-    .testimonial-card cite {
+    .testimonial-featured blockquote {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.5;
+      color: var(--color-text);
+      margin-bottom: 2rem;
+      font-weight: 400;
+      font-variation-settings: 'opsz' 48;
+    }
+
+    .testimonial-featured .testimonial-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-teal);
+      margin: 0 auto 1.25rem;
+      border: none;
+    }
+
+    .testimonial-featured cite {
+      display: block;
       font-style: normal;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--color-text);
+    }
+
+    @media (max-width: 600px) {
+      .testimonial-featured {
+        padding: 3rem 1.75rem 2.25rem;
+      }
+
+      .testimonial-featured::before {
+        font-size: 5rem;
+      }
+
+      .testimonial-featured blockquote {
+        font-size: 1.2rem;
+      }
     }
 
     /* =============================================
@@ -1105,10 +1143,6 @@ layout: none
 
       .includes-grid {
         grid-template-columns: 1fr 1fr;
-      }
-
-      .testimonials-grid {
-        grid-template-columns: 1fr;
       }
 
       .footer-grid {
@@ -1649,24 +1683,10 @@ layout: none
           <span>5.0 Perfect Rating</span>
         </div>
       </div>
-      <div class="testimonials-grid">
-        <!-- EDIT: Replace with real testimonials -->
-        <div class="testimonial-card fade-in">
-          <blockquote>&ldquo;Adam launched his new photobooth at our wedding at it was a hit!!! Everyone kept a saying how much they loved it and the pictures came out great!&rdquo;</blockquote>
-          <cite>&mdash; Jackie Friedman</cite>
-        </div>
-        <div class="testimonial-card fade-in">
-          <blockquote>&ldquo;We hired Flat White Portraits for our wedding and every single image is a work of art. The photographer captured moments we didn't even know were happening. Truly a gifted eye. This review is fake, our wedding hasn't happened yet.&rdquo;</blockquote>
-          <cite>&mdash; Jackson &amp; Kathleen G., Wedding</cite>
-        </div>
-        <div class="testimonial-card fade-in">
-          <blockquote>&ldquo;Flat White delivered the most amazing portraits for our little (well, not so little any more!!) Shlomi's special day. The session was relaxed and fun, and the final photos look like they belong in a magazine. All of the Hebrew school moms want to book as well! This is also a fake review!&rdquo;</blockquote>
-          <cite>&mdash; Esther T., Bar Mitzvah</cite>
-        </div>
-        <div class="testimonial-card fade-in">
-          <blockquote>&ldquo;This is a fake review. The photos turned out so great! The company doesn't even do newborn sessions. I'm not sure why this is on the page to begin with.&rdquo;</blockquote>
-          <cite>&mdash; Daniel &amp; Shaina L., Newborn Session</cite>
-        </div>
+      <div class="testimonial-featured fade-in">
+        <blockquote>Adam launched his new photobooth at our wedding at it was a hit!!! Everyone kept a saying how much they loved it and the pictures came out great!</blockquote>
+        <hr class="testimonial-divider">
+        <cite>Jackie Friedman</cite>
       </div>
     </div>
   </section>
