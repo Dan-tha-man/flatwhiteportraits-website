@@ -14,7 +14,7 @@ permalink: /privacy/
   <link rel="icon" type="image/svg+xml" href="assets/logo/logo-light.svg" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@1,400&family=Josefin+Sans:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-white: #ffffff;
@@ -82,15 +82,47 @@ permalink: /privacy/
       justify-content: space-between;
     }
 
-    .nav-logo {
-      display: inline-flex;
+    .nav-brand {
+      display: flex;
       align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
     }
 
-    .nav-logo img {
-      height: 36px;
+    .nav-brand img {
+      height: 48px;
       width: auto;
+    }
+
+    .nav-brand .brand-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .nav-brand .brand-script {
+      font-family: 'Libre Bodoni', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-text);
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "dlig" 0, "clig" 0, "calt" 0;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-brand .brand-script::first-letter {
+      margin-right: 0.06em;
+    }
+
+    .nav-brand .brand-caps {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--color-text);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
 
     .nav-back {
@@ -215,8 +247,12 @@ permalink: /privacy/
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <a href="/" class="nav-logo" aria-label="Flat White Portraits home">
-        <img src="assets/logo/logo-text-dark.svg" alt="Flat White Portraits">
+      <a href="/" class="nav-brand" aria-label="Flat White Portraits home">
+        <img src="assets/logo/logo-dark.svg" alt="">
+        <span class="brand-text">
+          <span class="brand-script">flat white</span>
+          <span class="brand-caps">Portraits</span>
+        </span>
       </a>
       <a href="/" class="nav-back">&larr; Back to site</a>
     </div>
