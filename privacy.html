@@ -1,0 +1,317 @@
+---
+layout: none
+permalink: /privacy/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Flat White Portraits</title>
+  <meta name="description" content="How Flat White Portraits collects, uses, and protects your information.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo-dark.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo-light.svg" media="(prefers-color-scheme: dark)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-white: #ffffff;
+      --color-sand-light: #f5f5f5;
+      --color-sand: #e0e0e0;
+      --color-teal: #5A5858;
+      --color-teal-dark: #4a4848;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-text-muted: #999999;
+      --color-dark: #1a1a1a;
+      --color-border: #e0e0e0;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --nav-height: 72px;
+      --transition: 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-white);
+    }
+
+    a {
+      color: var(--color-teal);
+      text-decoration: underline;
+      transition: color var(--transition);
+    }
+
+    a:hover { color: var(--color-teal-dark); }
+
+    .container {
+      width: 90%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav .container {
+      max-width: 1100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-back {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      text-decoration: none;
+    }
+
+    /* Main */
+    main {
+      padding-top: calc(var(--nav-height) + 4rem);
+      padding-bottom: 5rem;
+    }
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+    }
+
+    .effective-date {
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+
+    p { margin-bottom: 1rem; color: var(--color-text-light); }
+
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      color: var(--color-text-light);
+    }
+
+    li { margin-bottom: 0.5rem; }
+
+    strong { color: var(--color-text); font-weight: 600; }
+
+    .processor-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .processor-table th,
+    .processor-table td {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    .processor-table th {
+      background: var(--color-sand-light);
+      font-weight: 600;
+      color: var(--color-text);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .processor-table td { color: var(--color-text-light); }
+
+    /* Footer */
+    .footer {
+      background: var(--color-dark);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 3rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer .container { max-width: 1100px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
+    .footer a:hover { color: var(--color-white); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.3rem; }
+      main { padding-top: calc(var(--nav-height) + 2.5rem); }
+      .processor-table th,
+      .processor-table td { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="/" class="nav-logo" aria-label="Flat White Portraits home">
+        <img src="assets/logo/logo-text-dark.svg" alt="Flat White Portraits">
+      </a>
+      <a href="/" class="nav-back">&larr; Back to site</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="label">Legal</div>
+      <h1>Privacy Policy</h1>
+      <p class="effective-date">Effective May 11, 2026</p>
+
+      <p>Flat White Portraits ("we," "us," "our") is a wedding portrait studio based in Southern California. This policy explains what information we collect when you visit <a href="https://flatwhiteportraits.com">flatwhiteportraits.com</a> or inquire about our services, how we use it, and the choices you have. We've tried to keep this in plain English.</p>
+
+      <h2>Information we collect</h2>
+
+      <p><strong>Information you give us.</strong> When you fill out our contact form, we collect your name, email address, phone number (if provided), wedding or event date, venue, and anything else you choose to share. The form is hosted by HoneyBook, our customer-relationship platform.</p>
+
+      <p><strong>Information collected automatically.</strong> When you visit the site, we and our service providers automatically collect:</p>
+      <ul>
+        <li>Standard log data: IP address, browser type and version, operating system, the page you came from, and the pages you visit on our site.</li>
+        <li>Cookies and similar technologies (see below).</li>
+        <li>Ad attribution identifiers passed in the URL — for example <em>utm_source</em>, <em>utm_campaign</em>, <em>gclid</em> (Google Ads), <em>fbclid</em> (Facebook), and similar click IDs. These tell us which ad or referral brought you to the site.</li>
+      </ul>
+
+      <h2>Cookies and tracking</h2>
+
+      <p>We use cookies and similar technologies to understand how our site is used and to measure the effectiveness of our advertising. Specifically:</p>
+      <ul>
+        <li><strong>Google Tag Manager &amp; Google Ads</strong> &mdash; for conversion tracking and audience measurement.</li>
+        <li><strong>Session storage</strong> &mdash; to remember which ad or referral brought you to the site across pages during your visit.</li>
+        <li><strong>Facebook/Meta Pixel (_fbp)</strong> &mdash; only if it has been set by a previous visit to a site running Meta advertising.</li>
+      </ul>
+      <p>You can disable cookies in your browser settings. Doing so may affect some site functionality.</p>
+
+      <h2>How we use your information</h2>
+      <ul>
+        <li>Respond to your inquiry and provide a quote.</li>
+        <li>Send you booking documents, contracts, and invoices if you become a client.</li>
+        <li>Measure and improve the performance of our advertising and website.</li>
+        <li>Comply with our legal and tax obligations.</li>
+      </ul>
+      <p>We do not sell your personal information, and we do not share it with third parties for their own marketing.</p>
+
+      <h2>Who we share information with</h2>
+      <p>We share information only with service providers that help us run the business, and only as needed for them to do their job:</p>
+      <table class="processor-table">
+        <thead>
+          <tr><th>Service</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HoneyBook</td><td>Contact form, client management, contracts, invoices</td></tr>
+          <tr><td>Google (Ads, Tag Manager, Analytics)</td><td>Advertising measurement and site analytics</td></tr>
+          <tr><td>Zapier</td><td>Forwarding ad-attribution data into our records so we know which campaign produced an inquiry</td></tr>
+          <tr><td>Email provider</td><td>Receiving and sending email correspondence</td></tr>
+          <tr><td>GitHub Pages</td><td>Hosting this website</td></tr>
+        </tbody>
+      </table>
+      <p>We may also disclose information if required by law, subpoena, or to protect our rights.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep inquiry information for as long as we are in communication with you and for a reasonable period afterward in case you come back. If you become a client, we keep your records for at least seven years to meet tax and business-record requirements. You can ask us to delete your information at any time (see below).</p>
+
+      <h2>Your choices and rights</h2>
+      <p>You can:</p>
+      <ul>
+        <li>Ask us what information we have about you.</li>
+        <li>Ask us to correct or delete your information.</li>
+        <li>Ask us to stop sending you marketing email (every email also includes an unsubscribe link).</li>
+        <li>Opt out of Google's personalized ads via <a href="https://adssettings.google.com">adssettings.google.com</a> and Meta's via <a href="https://www.facebook.com/settings/?tab=ads">your Facebook ad preferences</a>.</li>
+      </ul>
+      <p>California residents have additional rights under the California Consumer Privacy Act, including the right to know, the right to delete, and the right to opt out of any "sale" or "sharing" of personal information. We do not sell or share personal information as those terms are defined under the CCPA.</p>
+      <p>To exercise any of these rights, email <a href="mailto:hello@flatwhiteportraits.com">hello@flatwhiteportraits.com</a>. We'll respond within 30 days.</p>
+
+      <h2>Children</h2>
+      <p>Our site is not directed at children under 13, and we do not knowingly collect their information. If you believe a child has provided information to us, contact us and we'll delete it.</p>
+
+      <h2>Security</h2>
+      <p>We use reasonable safeguards to protect your information, but no system is 100% secure. If you're concerned about transmitting sensitive information online, you're welcome to reach us by phone instead.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy as our business and the law evolve. When we do, we'll change the "Effective" date at the top and, for material changes, post a notice on the site.</p>
+
+      <h2>Contact us</h2>
+      <p>Questions about this policy or your information? Email <a href="mailto:hello@flatwhiteportraits.com">hello@flatwhiteportraits.com</a>.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 Flat White Portraits. All rights reserved.</span>
+        <a href="/">&larr; Back to home</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
