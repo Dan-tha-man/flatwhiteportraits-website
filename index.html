@@ -14,7 +14,7 @@ layout: none
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flat White Portraits | Luxury Photobooth</title>
-  <meta name="description" content="Flat White Portraits captures life's most meaningful moments with a natural, timeless approach. Vanity Fair-style portraits for weddings and events.">
+  <meta name="description" content="Flat White Portraits is the luxury photo booth alternative for weddings and events — a professional portrait studio with magazine-worthy lighting, expert posing, and Vanity Fair-style portraits of every guest.">
   <link rel="icon" type="image/svg+xml" href="assets/logo/logo-dark.svg" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/svg+xml" href="assets/logo/logo-light.svg" media="(prefers-color-scheme: dark)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -992,6 +992,73 @@ layout: none
       }
     }
 
+    /* Studio vs Booth comparison table */
+    .studio-table-wrap {
+      max-width: 900px;
+      margin: 3.5rem auto 0;
+    }
+
+    .studio-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .studio-table th,
+    .studio-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    .studio-table thead th {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--color-text);
+      border-bottom: 2px solid var(--color-text);
+    }
+
+    .studio-table thead th.studio-col-pro {
+      color: var(--color-teal);
+      border-bottom-color: var(--color-teal);
+    }
+
+    .studio-table tbody th {
+      font-weight: 600;
+      color: var(--color-text);
+      white-space: nowrap;
+    }
+
+    .studio-table td.studio-col-booth {
+      color: var(--color-text-muted);
+    }
+
+    .studio-table td.studio-col-pro {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .studio-table-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .studio-table-wrap {
+        margin-top: 2.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .studio-table {
+        min-width: 540px;
+      }
+    }
+
     /* =============================================
        Image Carousel
        ============================================= */
@@ -1352,6 +1419,41 @@ layout: none
       opacity: 1;
     }
 
+    /* =============================================
+       Sticky Mobile CTA
+       ============================================= */
+    .sticky-cta {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1500;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+        padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      .sticky-cta .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Keep the footer clear of the fixed bar */
+      .footer {
+        padding-bottom: calc(3rem + 64px + env(safe-area-inset-bottom, 0px));
+      }
+    }
+
     @media (max-width: 600px) {
       .contact-modal-content {
         width: 100%;
@@ -1402,7 +1504,7 @@ layout: none
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" class="btn btn-primary contact-trigger">Contact Us</a></li>
+        <li><a href="#contact" class="btn btn-primary contact-trigger">Check Your Date</a></li>
       </ul>
     </div>
   </nav>
@@ -1414,9 +1516,9 @@ layout: none
     <div class="hero-content">
       <span class="section-label">Flat White Portraits</span>
       <!-- EDIT: Headline and tagline -->
-      <h1>A Luxury Portrait Studio for Your Wedding</h1>
-      <p>We are a modern portrait studio for Southern California's most stylish weddings and events. Every guest is photographed like a Hollywood star with magazine-worthy lighting that gives flawless skin in every shot.</p>
-      <a href="#contact" class="btn btn-primary contact-trigger">Get In Touch</a>
+      <h1>The Luxury Photo Booth That Feels Like a Hollywood Studio</h1>
+      <p>Capture every guest in magazine-worthy lighting with our professional portrait studio. Flawless skin, expert posing, and keepsakes that last a lifetime.</p>
+      <a href="#contact" class="btn btn-primary contact-trigger">Check Availability</a>
     </div>
     <div class="hero-image">
       <!-- EDIT: Replace with your hero image -->
@@ -1469,6 +1571,47 @@ layout: none
           <span class="comparison-label">Our Portrait Experience</span>
           <img src="./assets/comparison/portrait.jpg" style="object-position: center top;">
         </div>
+      </div>
+
+      <!-- EDIT: Studio vs Booth table — refine equipment specifics to match your exact gear -->
+      <div class="studio-table-wrap fade-in">
+        <table class="studio-table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col" class="studio-col-booth">Standard Photo Booth</th>
+              <th scope="col" class="studio-col-pro">Flat White Studio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Lighting</th>
+              <td class="studio-col-booth">Harsh on-camera flash</td>
+              <td class="studio-col-pro">Studio-quality continuous softbox lighting</td>
+            </tr>
+            <tr>
+              <th scope="row">Behind the camera</th>
+              <td class="studio-col-booth">Automated timer, no guidance</td>
+              <td class="studio-col-pro">Professional photographer with expert posing</td>
+            </tr>
+            <tr>
+              <th scope="row">Editing</th>
+              <td class="studio-col-booth">None or an automatic filter</td>
+              <td class="studio-col-pro">On-site editor, every portrait individually edited</td>
+            </tr>
+            <tr>
+              <th scope="row">The look</th>
+              <td class="studio-col-booth">Sequins, glitter, and props</td>
+              <td class="studio-col-pro">Timeless solid backdrop in white or black</td>
+            </tr>
+            <tr>
+              <th scope="row">The result</th>
+              <td class="studio-col-booth">Novelty snapshots</td>
+              <td class="studio-col-pro">Frame-ready portraits made to be displayed</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="studio-table-note">The difference your guests feel the moment they step in front of the lens.</p>
       </div>
     </div>
   </section>
@@ -1544,10 +1687,10 @@ layout: none
           <img src="./assets/guestbook/guestbook_8.jpg" alt="Guest book sample showing a signed portrait" class="guestbook-slide">
         </div>
         <div class="split-text">
-          <span class="section-label">A Personal Touch</span>
+          <span class="section-label">Your Secret Weapon</span>
           <h2 class="section-heading">The Digital Guest Book</h2>
           <p class="section-body">
-            Give your guests a meaningful way to leave their mark. After their portrait session, each guest signs their photo with a heartfelt message using our on-site display. These signed portraits are compiled into a beautiful digital guest book, delivered to you shortly after your wedding.
+            Capture the love, not just the photos. Our Digital Guest Book lets every guest leave a heartfelt, handwritten note right on their portrait, delivered to you in a stunning high-res gallery you'll revisit for years to come.
           </p>
           <p class="section-body">
             Want something you can hold? Upgrade to a handcrafted physical guest book, printed on archival-quality paper and bound in Italy for a treasured keepsake you'll revisit for years to come.
@@ -1581,7 +1724,7 @@ layout: none
             <span class="amount">$1,499</span>
           </div>
           <div class="pricing-cta">
-            <a href="#contact" class="btn btn-outline contact-trigger">Inquire Now</a>
+            <a href="#contact" class="btn btn-outline contact-trigger">Check Your Date</a>
           </div>
         </div>
 
@@ -1600,7 +1743,7 @@ layout: none
             <span class="amount">$1,999</span>
           </div>
           <div class="pricing-cta">
-            <a href="#contact" class="btn btn-teal contact-trigger">Inquire Now</a>
+            <a href="#contact" class="btn btn-teal contact-trigger">Check Your Date</a>
           </div>
         </div>
 
@@ -1634,12 +1777,12 @@ layout: none
           <div class="addon-item">
             <h4>Physical Guest Book</h4>
             <div class="addon-price">Starting at $1,000</div>
-            <p>Hand-crafted in Italy with the utmost quality materials for a treasured keepsake.</p>
+            <p>Hand-crafted in Italy with the utmost quality materials for a treasured keepsake. Final price depends on size and page count.</p>
           </div>
           <div class="addon-item">
             <h4>On-site Prints</h4>
-            <div class="addon-price">Starting at $399</div>
-            <p>Instant high-quality prints for guests to take home the same night.</p>
+            <div class="addon-price">$399 flat</div>
+            <p>One flat fee for the whole event. Unlimited high-quality prints for every guest to take home the same night.</p>
           </div>
         </div>
       </div>
@@ -1667,7 +1810,7 @@ layout: none
         <div class="include-item fade-in">
           <div class="include-icon" aria-hidden="true">&#x1F3A8;</div>
           <h3>Backdrop Options</h3>
-          <p>Choose from classic white, dramatic black, or custom colors to match your wedding aesthetic and color palette.</p>
+          <p>Choose from classic white or dramatic black for a clean, timeless look that complements any wedding aesthetic.</p>
         </div>
         <div class="include-item fade-in">
           <div class="include-icon" aria-hidden="true">&#x1F5BC;</div>
@@ -1775,7 +1918,7 @@ layout: none
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Absolutely! We offer two backdrop options, including all white or dramatic black, to match your wedding aesthetic. We are happy to shoot on a client-customized backdrop that is provided. We can work with you on ordering or adding on the backdrop. For the prints, we can add custom text, monograms, or your wedding date to create a personalized keepsake. During our consultation, we’ll discuss your vision and color palette to ensure our setup seamlessly integrates with your overall wedding design. Many couples choose to match their backdrop to their wedding colors or opt for timeless black and white prints.
+              Absolutely! Our studio backdrops come in classic white or dramatic black for a clean, timeless look. If you have something specific in mind, we’re also happy to shoot on a backdrop you provide. For the prints, we can add custom text, monograms, or your wedding date to create a personalized keepsake. During our consultation, we’ll discuss your vision and color palette to ensure our setup seamlessly integrates with your overall wedding design. Many couples opt for timeless black and white prints to match the elegance of their portraits.
             </div>
           </div>
         </div>
@@ -1831,7 +1974,7 @@ layout: none
           Your milestone moments deserve more than a fleeting snapshot. They deserve the care and artistry of someone who will preserve them exactly as they felt. We'd love to hear your story.
         </p>
         <!-- EDIT: Replace with your actual email address -->
-        <a href="#contact" class="btn btn-teal contact-trigger">Book Your Session</a>
+        <a href="#contact" class="btn btn-teal contact-trigger">Check Your Date</a>
       </div>
     </div>
   </section>
@@ -1873,6 +2016,11 @@ layout: none
       </div>
     </div>
   </footer>
+
+  <!-- Sticky CTA (mobile only) -->
+  <div class="sticky-cta">
+    <a href="#contact" class="btn btn-teal contact-trigger">Check Your Date</a>
+  </div>
 
   <!-- Contact Modal -->
   <div class="contact-modal" id="contactModal">
