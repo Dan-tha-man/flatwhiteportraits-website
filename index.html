@@ -755,69 +755,95 @@ layout: none
       letter-spacing: 2px;
     }
 
-    .testimonial-featured {
-      max-width: 760px;
-      margin: 0 auto;
-      background: var(--color-white);
-      padding: 4rem 3rem 3rem;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.05);
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
-    .testimonial-featured::before {
+    .testimonial-card {
+      position: relative;
+      background: var(--color-white);
+      border-radius: 8px;
+      padding: 3.25rem 2rem 2.25rem;
+      text-align: center;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      transition: transform var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    }
+
+    .testimonial-card::before {
       content: '\201C';
       position: absolute;
-      top: 1.75rem;
+      top: 1.25rem;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 5.5rem;
+      font-size: 4rem;
       line-height: 1;
       color: var(--color-teal);
       font-style: italic;
     }
 
-    .testimonial-featured blockquote {
+    .testimonial-card blockquote {
       font-family: 'Newsreader', Georgia, serif;
       font-style: italic;
-      font-size: 1.55rem;
-      line-height: 1.5;
+      font-size: 1.15rem;
+      line-height: 1.55;
       color: var(--color-text);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-weight: 400;
-      font-variation-settings: 'opsz' 48;
+      font-variation-settings: 'opsz' 36;
+      flex-grow: 1;
     }
 
-    .testimonial-featured .testimonial-divider {
-      width: 48px;
+    .testimonial-card .testimonial-stars {
+      color: #d4a853;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card .testimonial-divider {
+      width: 40px;
       height: 1px;
       background: var(--color-teal);
-      margin: 0 auto 1.25rem;
+      margin: 0 auto 1rem;
       border: none;
     }
 
-    .testimonial-featured cite {
+    .testimonial-card cite {
       display: block;
       font-style: normal;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--color-text);
     }
 
+    @media (max-width: 900px) {
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 600px) {
-      .testimonial-featured {
-        padding: 3rem 1.75rem 2.25rem;
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .testimonial-featured::before {
-        font-size: 5rem;
-      }
-
-      .testimonial-featured blockquote {
-        font-size: 1.2rem;
+      .testimonial-card blockquote {
+        font-size: 1.1rem;
       }
     }
 
@@ -1031,6 +1057,11 @@ layout: none
       white-space: nowrap;
     }
 
+    .studio-table .studio-col-booth,
+    .studio-table .studio-col-pro {
+      width: 37%;
+    }
+
     .studio-table td.studio-col-booth {
       color: var(--color-text-muted);
     }
@@ -1041,21 +1072,49 @@ layout: none
     }
 
     .studio-table-note {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
+      margin-top: 2.25rem;
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var(--color-text);
       text-align: center;
+      max-width: 46rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (max-width: 768px) {
       .studio-table-wrap {
         margin-top: 2.5rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
       }
 
       .studio-table {
-        min-width: 540px;
+        font-size: 0.9rem;
+      }
+
+      .studio-table th,
+      .studio-table td {
+        padding: 0.85rem 0.75rem;
+      }
+
+      .studio-table tbody th {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .studio-table {
+        font-size: 0.82rem;
+      }
+
+      .studio-table th,
+      .studio-table td {
+        padding: 0.7rem 0.5rem;
+      }
+
+      .studio-table thead th {
+        font-size: 1rem;
       }
     }
 
@@ -1580,7 +1639,7 @@ layout: none
             <tr>
               <th scope="col"></th>
               <th scope="col" class="studio-col-booth">Standard Photo Booth</th>
-              <th scope="col" class="studio-col-pro">Flat White Studio</th>
+              <th scope="col" class="studio-col-pro">Flat White Portraits</th>
             </tr>
           </thead>
           <tbody>
@@ -1611,7 +1670,7 @@ layout: none
             </tr>
           </tbody>
         </table>
-        <p class="studio-table-note">The difference your guests feel the moment they step in front of the lens.</p>
+        <p class="studio-table-note">Your guests feel the difference the moment they step in front of the lens.</p>
       </div>
     </div>
   </section>
@@ -1844,10 +1903,28 @@ layout: none
           <span>5.0 Perfect Rating</span>
         </div>
       </div>
-      <div class="testimonial-featured fade-in">
-        <blockquote>Adam launched his new photobooth at our wedding at it was a hit!!! Everyone kept a saying how much they loved it and the pictures came out great!</blockquote>
-        <hr class="testimonial-divider">
-        <cite>Jackie Friedman</cite>
+      <!-- EDIT: Each card is one review. Add or remove cards in this grid (aim for 3 or 6 so
+           the layout stays balanced). Replace the bracketed placeholders with real reviews and
+           names — keep the 5-star row only for genuine 5-star reviews. -->
+      <div class="testimonial-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>Adam launched his new photobooth at our wedding at it was a hit!!! Everyone kept a saying how much they loved it and the pictures came out great!</blockquote>
+          <hr class="testimonial-divider">
+          <cite>Jackie Friedman</cite>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>Working with flat white was a dream come true. Their team made our wedding extra special and so memorable for us and our guests. So many of our guests had so much fun at the booth and it was so fun for us to see them post their photos from our wedding. The flat white experience is truly worth booking, you’ll be grateful for the memories and photos.</blockquote>
+          <hr class="testimonial-divider">
+          <cite>Katie & Jackson G.</cite>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>Such a cool experience. It felt fancy in the best way and the photos were definitely keepsake-worthy.</blockquote>
+          <hr class="testimonial-divider">
+          <cite>Nadeem M.</cite>
+        </div>
       </div>
     </div>
   </section>
